@@ -1,9 +1,12 @@
 package com.android.gajju45.pexelapiApp;
 
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -17,6 +20,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.core.widget.NestedScrollView;
@@ -91,7 +95,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         View headerView = navigationView.getHeaderView(0);
 
 
-        checkInternetConnection(true);
+
 
         //recycler View
         recyclerView = findViewById(R.id.recyclerView);
@@ -102,9 +106,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         recyclerView.setAdapter(wallpaperAdapter);
         final GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 2);
         recyclerView.setLayoutManager(gridLayoutManager);
-        //scroll Behaviour
 
-
+        //Connection
+        if(!isConnected(this))
+        {
+            showCustomDialog();
+        }
+//scroll Behaviour
         /** nestedScrollView.setOnScrollChangeListener((NestedScrollView.OnScrollChangeListener) (v, scrollX, scrollY, oldScrollX, oldScrollY) -> {
          if (scrollY==v.getChildAt(0).getMeasuredHeight()-v.getMeasuredHeight()){
          ++pageNumber;
@@ -156,6 +164,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         searchIV = findViewById(R.id.search_img);
 
 
+
         searchIV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -170,6 +179,48 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         });
 
 
+    }
+
+
+//Check Internet Connection
+
+    private boolean isConnected(MainActivity mainActivity) {
+        ConnectivityManager connectivityManager=(ConnectivityManager) mainActivity.getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        NetworkInfo wifiConnection=connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
+        NetworkInfo mobileConnecton=connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
+
+        if (wifiConnection != null &&wifiConnection.isConnected() || (mobileConnecton !=null &&mobileConnecton.isConnected())){
+            return true;
+
+        }
+        else {
+            return false;
+        }
+
+    }
+
+    private void showCustomDialog() {
+        AlertDialog.Builder builder=new AlertDialog.Builder(this);
+        builder.setMessage("Please Connect to the internet to proceed further")
+                .setCancelable(false)
+                .setPositiveButton("Connect", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        startActivity(new Intent(Settings.ACTION_WIFI_SETTINGS));
+                    }
+                }).setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+        AlertDialog alert = builder.create();
+        alert.setOnShowListener(arg0 -> {
+            alert.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(getResources().getColor(R.color.back_button));
+            alert.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(getResources().getColor(R.color.back_button));
+        });
+        alert.show();
     }
   /*  @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -188,14 +239,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
 
-    private void checkInternetConnection(boolean b) {
-        ConnectivityManager manager = (ConnectivityManager) getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
 
-        NetworkInfo activityNetwork = manager.getActiveNetworkInfo();
-        if (null == activityNetwork) {
-            Toast.makeText(this, "Connect Your Network", Toast.LENGTH_SHORT).show();
-        }
-    }
 
 
     private void navigationDrawer() {
