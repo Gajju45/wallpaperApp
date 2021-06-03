@@ -24,7 +24,7 @@
             android:layout_margin="5dp"
             android:background="@drawable/card"
             android:scaleType="centerCrop"
-            android:src="@drawable/bg_image" />
+            android:src="@drawable/beautiful" />
 
 
         <TextView

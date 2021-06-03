@@ -23,11 +23,13 @@ public class SuggestedAdapter extends RecyclerView.Adapter<SuggestedAdapter.Suge
         this.clickListener = clickListener;
     }
 
+
     @NonNull
     @Override
     public SugestedVH onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.suggested_item, parent, false);
         final SugestedVH sugestedVH = new SugestedVH(view);
+
         return sugestedVH;
     }
 

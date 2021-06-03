@@ -23,7 +23,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
-        android:src="@drawable/bg_image"
+        android:src="@drawable/beautiful"
         tools:layout_editor_absoluteX="160dp"
         tools:layout_editor_absoluteY="69dp" />
 
