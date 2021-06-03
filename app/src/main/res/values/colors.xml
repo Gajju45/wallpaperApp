@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#111</color>
+    <color name="purple_500">#111</color>
+    <color name="purple_700">#111</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <color name="login_background">#D514192C</color>
+    <color name="back_button">#14a484</color>
+
+    <color name="deshboard_color">#D5F2FF</color>
+    <color name="text_color">#1E1E1E</color>
+    <color name="banner_light">#FBF8DD</color>
+    <color name="banner_dark">#FFF2CD</color>
+    <color name="text2">#FFFFFF</color>
+    <color name="light_white">#F4F4F4</color>
+    <color name="dark_gry">#979797</color>
+
+</resources>

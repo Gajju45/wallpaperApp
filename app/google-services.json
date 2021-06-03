@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "901403711193",
+    "project_id": "pexelapiapp",
+    "storage_bucket": "pexelapiapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:901403711193:android:45b77c3bcee23544ec50c8",
+        "android_client_info": {
+          "package_name": "com.android.gajju45.pexelapiApp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "901403711193-un6l1etkihmhsl5guva0a8n1hig3td2f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC4icDMY5CltWnRnK5iiEjeIc05wcfW684"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "901403711193-un6l1etkihmhsl5guva0a8n1hig3td2f.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
