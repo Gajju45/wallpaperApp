@@ -39,7 +39,8 @@ public class FullScreenWallpaperActivity extends AppCompatActivity {
     String originalUrl = " ";
     PhotoView photoView;
     CircularProgressButton setWallpaperButton, downloadWallpaper;
-    ImageView shareBtn;
+    ImageView shareBtn ,backBytton;
+
 
 
     @Override
@@ -52,6 +53,16 @@ public class FullScreenWallpaperActivity extends AppCompatActivity {
         final ProgressBar progressBar = (ProgressBar) findViewById(R.id.progress_bar);
 
         shareBtn=findViewById(R.id.shareImg);
+        backBytton=findViewById(R.id.backButton);
+
+        backBytton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(FullScreenWallpaperActivity.this, MainActivity.class);
+                startActivity(intent);
+
+            }
+        });
 
 
         photoView = findViewById(R.id.photoView);
