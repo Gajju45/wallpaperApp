@@ -46,6 +46,7 @@ public class wallpaperAdapter extends RecyclerView.Adapter<WallpaperViewHolder> 
             @Override
             public void onClick(View v) {
                 context.startActivity(new Intent(context,FullScreenWallpaperActivity.class)
+
                 .putExtra("originalUrl",model.getOriginalUrl()));
             }
         });

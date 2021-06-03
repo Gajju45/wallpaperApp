@@ -12,6 +12,7 @@ import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -39,8 +40,7 @@ public class FullScreenWallpaperActivity extends AppCompatActivity {
     String originalUrl = " ";
     PhotoView photoView;
     CircularProgressButton setWallpaperButton, downloadWallpaper;
-    ImageView shareBtn ,backBytton;
-
+    ImageView shareBtn, backBytton;
 
 
     @Override
@@ -52,8 +52,8 @@ public class FullScreenWallpaperActivity extends AppCompatActivity {
 
         final ProgressBar progressBar = (ProgressBar) findViewById(R.id.progress_bar);
 
-        shareBtn=findViewById(R.id.shareImg);
-        backBytton=findViewById(R.id.backButton);
+        shareBtn = findViewById(R.id.shareImg);
+        backBytton = findViewById(R.id.backButton);
 
         backBytton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -107,8 +107,8 @@ public class FullScreenWallpaperActivity extends AppCompatActivity {
                             try {
                                 wallpaperManager.setBitmap(bitmap2);
                                 Toast.makeText(FullScreenWallpaperActivity.this, "Set Wllpaper succesfully ", Toast.LENGTH_SHORT).show();
-                                Bitmap bm= drawableToBitmap(getResources().getDrawable(R.drawable.ic_baseline_done_24));
-                               // setWallpaperButton.doneLoadingAnimation(R.color.purple_200,bm);
+                                Bitmap bm = drawableToBitmap(getResources().getDrawable(R.drawable.ic_baseline_done_24));
+                                // setWallpaperButton.doneLoadingAnimation(R.color.purple_200,bm);
                                 setWallpaperButton.setText("Set Wllpaper succesfully");
 
                             } catch (IOException e) {
@@ -119,7 +119,7 @@ public class FullScreenWallpaperActivity extends AppCompatActivity {
 
                     }
                 };
-               // setWallpaperButton.startAnimation();
+                // setWallpaperButton.startAnimation();
                 demosetWallpaper.execute();
 
             }
@@ -146,9 +146,9 @@ public class FullScreenWallpaperActivity extends AppCompatActivity {
                         if (s.equals("done")) {
                             Toast.makeText(FullScreenWallpaperActivity.this, "Downloading Start...", Toast.LENGTH_SHORT).show();
                             AltexImageDownloader.writeToDisk(FullScreenWallpaperActivity.this, originalUrl, "pexels");
-                            Toast.makeText(FullScreenWallpaperActivity.this, "Downloading Start...", Toast.LENGTH_SHORT).show();//
+
                             Bitmap bitmap2 = drawableToBitmap(getResources().getDrawable(R.drawable.ic_baseline_done_24));
-                          //  downloadWallpaper.doneLoadingAnimation(R.color.purple_200, bitmap2);
+                            //  downloadWallpaper.doneLoadingAnimation(R.color.purple_200, bitmap2);
                             downloadWallpaper.setText("Succesfully Download");
                             Toast.makeText(FullScreenWallpaperActivity.this, "Succesfully Downloadin", Toast.LENGTH_SHORT).show();
 
@@ -156,7 +156,7 @@ public class FullScreenWallpaperActivity extends AppCompatActivity {
 
                     }
                 };
-              //  downloadWallpaper.startAnimation();
+                //  downloadWallpaper.startAnimation();
                 demosetWallpaper.execute();
 
             }
@@ -192,17 +192,17 @@ public class FullScreenWallpaperActivity extends AppCompatActivity {
     }
 
 
-
-    private Bitmap drawableToBitmap(Drawable drawable) { Bitmap bitmap2 = null;
+    private Bitmap drawableToBitmap(Drawable drawable) {
+        Bitmap bitmap2 = null;
 
         if (drawable instanceof BitmapDrawable) {
             BitmapDrawable bitmapDrawable = (BitmapDrawable) drawable;
-            if(bitmapDrawable.getBitmap() != null) {
+            if (bitmapDrawable.getBitmap() != null) {
                 return bitmapDrawable.getBitmap();
             }
         }
 
-        if(drawable.getIntrinsicWidth() <= 0 || drawable.getIntrinsicHeight() <= 0) {
+        if (drawable.getIntrinsicWidth() <= 0 || drawable.getIntrinsicHeight() <= 0) {
             bitmap2 = Bitmap.createBitmap(1, 1, Bitmap.Config.ARGB_8888); // Single color bitmap will be created of 1x1 pixel
         } else {
             bitmap2 = Bitmap.createBitmap(drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight(), Bitmap.Config.ARGB_8888);
