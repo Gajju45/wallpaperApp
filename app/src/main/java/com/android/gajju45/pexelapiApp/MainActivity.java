@@ -50,13 +50,10 @@ import java.util.List;
 import java.util.Map;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, RecyclerViewClickListenerInterface {
-
     ImageView menuIcon;
     LinearLayout contentView;
-
     DrawerLayout drawerLayout;
     NavigationView navigationView;
-
     RecyclerView recyclerView, topMostRecyclerView;
     RecyclerView.Adapter adapter;
     wallpaperAdapter wallpaperAdapter;
@@ -124,6 +121,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
          });
          \**\**/
+
 
         recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
