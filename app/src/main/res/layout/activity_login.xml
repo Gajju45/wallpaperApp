@@ -72,7 +72,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
                 android:gravity="center_horizontal"
-                android:letterSpacing="0.2"
+                android:letterSpacing="0.12"
                 android:text="We need to register your phone number before getting \n stared ! "
                 android:textColor="@color/white"
                 android:textSize="12sp" />
@@ -94,6 +94,7 @@
                     app:ccp_contentColor="@color/white" />
 
                 <EditText
+
                     android:id="@+id/editText_carrierNum"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -105,7 +106,6 @@
                     android:inputType="phone"
                     android:textColor="@color/white"
                     android:textColorHint="#787878"
-
                     android:textCursorDrawable="@drawable/curser_white"
                     android:textSize="20sp" />
 

@@ -50,13 +50,15 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:textColor="@color/black"
-           android:textStyle="bold"
-            android:gravity="center_horizontal"
+            android:layout_marginStart="112dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:gravity="center"
             android:text="Double tap to HD preview"
-            android:layout_gravity="center_vertical"/>
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
         <ImageView
             android:id="@+id/shareImg"
             android:layout_width="48dp"
@@ -85,8 +87,9 @@
             android:id="@+id/buttonDownloadWallpaper"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            android:layout_gravity="center_horizontal"
             android:layout_marginEnd="4dp"
+            android:clickable="true"
             android:layout_weight="1"
             android:backgroundTint="#14a484"
             android:gravity="center"
@@ -95,6 +98,7 @@
             android:textColor="@color/white" />
 
         <br.com.simplepass.loadingbutton.customViews.CircularProgressButton
+            android:clickable="true"
             android:id="@+id/buttonSetWallpaper"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
