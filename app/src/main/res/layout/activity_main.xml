@@ -54,7 +54,6 @@
                 android:textSize="20sp" />
 
         </RelativeLayout>
-
         <androidx.core.widget.NestedScrollView
             android:id="@+id/nestedSV"
             android:layout_width="match_parent"
@@ -62,6 +61,7 @@
             android:layout_marginStart="6dp"
             android:layout_marginEnd="10dp"
             android:layout_marginBottom="10dp">
+
 
             <LinearLayout
                 android:layout_width="match_parent"

@@ -24,12 +24,13 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthOptions;
 import com.google.firebase.auth.PhoneAuthProvider;
+import com.mukesh.OtpView;
 import com.tuyenmonkey.mkloader.MKLoader;
 
 import java.util.concurrent.TimeUnit;
 
 public class VerificationActivity extends AppCompatActivity {
-    private EditText otp;
+    private OtpView otp;
     private AppCompatButton submit;
     private TextView resend;
     private MKLoader loader;

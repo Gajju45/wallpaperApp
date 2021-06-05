@@ -7,6 +7,8 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -63,7 +65,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     TextView replaceTitle;
     Boolean isScrolling = false;
     int pageNumber = 2;
-    int currentItem, totalItem, ScrollOutItem;
+    int currentItem, totalItem, scrollOutItem;
 
     ProgressBar progressBar;
     String url = "https://api.pexels.com/v1/curated/?page=" + pageNumber + "&per_page=80";
@@ -100,9 +102,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         wallpaperModelList = new ArrayList<>();
         wallpaperAdapter = new wallpaperAdapter(this, wallpaperModelList);
-        recyclerView.setAdapter(wallpaperAdapter);
-        final GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 2);
-        recyclerView.setLayoutManager(gridLayoutManager);
 
         //Connection
         if(!isConnected(this))
@@ -122,10 +121,26 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
          });
          \**\**/
 
+        //Nested Recycler View
+        nestedScrollView.setOnScrollChangeListener((NestedScrollView.OnScrollChangeListener) (v, scrollX, scrollY, oldScrollX, oldScrollY) -> {
+            if(v.getChildAt(v.getChildCount() - 1) != null) {
+                if ((scrollY >= (v.getChildAt(v.getChildCount() - 1).getMeasuredHeight() - v.getMeasuredHeight())) &&
+                        scrollY > oldScrollY) {
+                    url = "https://api.pexels.com/v1/curated/?page=" + pageNumber + "per_page=80";
+                    fetchWallpaper();
+                    //code to fetch more data for endless scrolling
+                }
+            }
+        });
 
-        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+
+        recyclerView.setAdapter(wallpaperAdapter);
+        final GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 2);
+        recyclerView.setLayoutManager(gridLayoutManager);
+
+     /****   recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
-            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+            public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
                 super.onScrollStateChanged(recyclerView, newState);
                 if (newState == AbsListView.OnScrollListener.SCROLL_STATE_TOUCH_SCROLL) {
                     isScrolling = true;
@@ -133,21 +148,19 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
 
             @Override
-            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
                 currentItem = gridLayoutManager.getChildCount();
                 totalItem = gridLayoutManager.getItemCount();
-                ScrollOutItem = gridLayoutManager.findFirstVisibleItemPosition();
+                scrollOutItem = gridLayoutManager.findFirstVisibleItemPosition();
 
-                if (isScrolling && (currentItem + ScrollOutItem == totalItem)) {
+                if (isScrolling && (currentItem + scrollOutItem == totalItem)) {
                     isScrolling = false;
                     fetchWallpaper();
-
                 }
             }
-
         });
-
+*****/
         fetchWallpaper();
         suggestedItems();
         progressBar = findViewById(R.id.progressbar);
@@ -176,6 +189,29 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
         });
 
+        //Search Implementation
+       searchEt.addTextChangedListener(new TextWatcher() {
+           @Override
+           public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+           }
+
+           @Override
+           public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+               String query = search.getText().toString().toLowerCase();
+               progressBar.setVisibility(View.VISIBLE);
+               url = "https://api.pexels.com/v1/search/?page=" + pageNumber + "&per_page=80&query=" + query;
+               wallpaperModelList.clear();
+               fetchWallpaper();
+               progressBar.setVisibility(View.GONE);
+
+           }
+
+           @Override
+           public void afterTextChanged(Editable editable) {
+
+           }
+       });
 
     }
 
