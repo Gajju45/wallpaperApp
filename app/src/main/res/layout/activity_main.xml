@@ -83,6 +83,8 @@
                         android:elevation="8dp">
 
                         <EditText
+                            android:textCursorDrawable="@drawable/curser_black"
+                            android:background="@null"
                             android:id="@+id/searchEV"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
