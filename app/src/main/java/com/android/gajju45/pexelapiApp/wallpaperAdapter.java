@@ -40,15 +40,15 @@ public class wallpaperAdapter extends RecyclerView.Adapter<WallpaperViewHolder> 
         final WallpaperViewHolder holder = holders;
         wallpaperModel model = wallpaperModelList.get(position);
 
-        holder.photographerName.setText(" " +wallpaperModelList.get(position).getPhotographerName());
+        holder.photographerName.setText(" " + wallpaperModelList.get(position).getPhotographerName());
         Glide.with(context).load(model.getMediumUrl()).into(holder.imageView);
 
         holder.imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                context.startActivity(new Intent(context,FullScreenWallpaperActivity.class)
-
-                .putExtra("originalUrl",model.getOriginalUrl()));
+                context.startActivity(new Intent(context, FullScreenWallpaperActivity.class)
+                        .putExtra("originalUrl", model.getOriginalUrl())
+                        .putExtra("mediumlUrl", model.getMediumUrl()));
             }
         });
 

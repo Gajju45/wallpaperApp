@@ -30,7 +30,7 @@ import com.tuyenmonkey.mkloader.MKLoader;
 import java.util.concurrent.TimeUnit;
 
 public class VerificationActivity extends AppCompatActivity {
-    private OtpView otp;
+    private EditText otp;
     private AppCompatButton submit;
     private TextView resend;
     private MKLoader loader;
@@ -53,6 +53,8 @@ public class VerificationActivity extends AppCompatActivity {
         resend = findViewById(R.id.resend);
         mAuth = FirebaseAuth.getInstance();
         number = getIntent().getStringExtra("number");
+
+
 
         sendVerificationCode();
         submit.setOnClickListener(new View.OnClickListener() {
@@ -140,6 +142,7 @@ public class VerificationActivity extends AppCompatActivity {
                             startActivity(new Intent(VerificationActivity.this, MainActivity.class));
                             finish();
                             FirebaseUser user = task.getResult().getUser();
+                            Toast.makeText(VerificationActivity.this, "OTP Correct", Toast.LENGTH_SHORT).show();
                             // Update UI
                         } else {
                             // Sign in failed, display a message and update the UI

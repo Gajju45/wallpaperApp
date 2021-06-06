@@ -40,9 +40,12 @@ import br.com.simplepass.loadingbutton.customViews.CircularProgressButton;
 
 public class FullScreenWallpaperActivity extends AppCompatActivity {
     String originalUrl = " ";
+
+    String mediumUrl = " ";
     PhotoView photoView;
     CircularProgressButton setWallpaperButton, downloadWallpaper;
     ImageView shareBtn, backBytton;
+    PhotoView constraintLayout;
 
 
     @Override
@@ -51,6 +54,8 @@ public class FullScreenWallpaperActivity extends AppCompatActivity {
         setContentView(R.layout.activity_full_screen_wallpaper);
         Intent intent = getIntent();
         originalUrl = intent.getStringExtra("originalUrl");
+        mediumUrl = intent.getStringExtra("mediumlUrl");
+
 
         final ProgressBar progressBar = (ProgressBar) findViewById(R.id.progress_bar);
 
@@ -66,6 +71,24 @@ public class FullScreenWallpaperActivity extends AppCompatActivity {
 
             }
         });
+
+
+        constraintLayout=findViewById(R.id.medium_photo);
+        Glide.with(this).load(mediumUrl)
+                .listener(new RequestListener<Drawable>() {
+                    @Override
+                    public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
+                       return false;
+                    }
+
+                    @Override
+                    public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
+
+                        return false;
+                    }
+                }).into(constraintLayout);
+
+
 
 
         photoView = findViewById(R.id.photoView);
