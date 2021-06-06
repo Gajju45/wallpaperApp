@@ -58,6 +58,7 @@ public class VerificationActivity extends AppCompatActivity {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 if (TextUtils.isEmpty(otp.getText().toString())) {
                     Toast.makeText(VerificationActivity.this, "Enter OTP", Toast.LENGTH_SHORT).show();
                 } else if (otp.getText().toString().replace(" ", "").length() != 6) {

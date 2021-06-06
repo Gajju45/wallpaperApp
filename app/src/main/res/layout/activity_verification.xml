@@ -110,7 +110,7 @@
                     android:textSize="20sp"
                     app:OtpItemCount="6"
                     app:OtpLineColor="@color/back_button"
-                    app:OtpViewType="rectangle"
+                    app:OtpViewType="line"
                     />
 
             </LinearLayout>
