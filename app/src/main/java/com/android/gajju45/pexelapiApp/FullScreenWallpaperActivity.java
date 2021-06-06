@@ -29,6 +29,8 @@ import com.bumptech.glide.load.engine.GlideException;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
 import com.github.chrisbanes.photoview.PhotoView;
+import com.github.ybq.android.spinkit.sprite.Sprite;
+import com.github.ybq.android.spinkit.style.DoubleBounce;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -51,6 +53,7 @@ public class FullScreenWallpaperActivity extends AppCompatActivity {
         originalUrl = intent.getStringExtra("originalUrl");
 
         final ProgressBar progressBar = (ProgressBar) findViewById(R.id.progress_bar);
+
 
         shareBtn = findViewById(R.id.shareImg);
         backBytton = findViewById(R.id.backButton);

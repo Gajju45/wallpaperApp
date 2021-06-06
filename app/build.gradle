@@ -60,4 +60,7 @@ dependencies {
     //OTP View
     implementation 'com.github.mukeshsolanki:android-otpview-pinview:2.1.2'
 
+    // SpinkitView
+    implementation 'com.github.ybq:Android-SpinKit:1.4.0'
+
 }
