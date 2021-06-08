@@ -31,6 +31,7 @@ import com.bumptech.glide.request.target.Target;
 import com.github.chrisbanes.photoview.PhotoView;
 import com.github.ybq.android.spinkit.sprite.Sprite;
 import com.github.ybq.android.spinkit.style.DoubleBounce;
+import com.muddzdev.styleabletoast.StyleableToast;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -45,7 +46,7 @@ public class FullScreenWallpaperActivity extends AppCompatActivity {
     PhotoView photoView;
     CircularProgressButton setWallpaperButton, downloadWallpaper;
     ImageView shareBtn, backBytton;
-    PhotoView constraintLayout;
+    ImageView constraintLayout;
 
 
     @Override
@@ -135,7 +136,6 @@ public class FullScreenWallpaperActivity extends AppCompatActivity {
                                 Toast.makeText(FullScreenWallpaperActivity.this, "Set Wllpaper succesfully ", Toast.LENGTH_SHORT).show();
                                 Bitmap bm = drawableToBitmap(getResources().getDrawable(R.drawable.ic_baseline_done_24));
                                 // setWallpaperButton.doneLoadingAnimation(R.color.purple_200,bm);
-                                setWallpaperButton.setText("Set Wllpaper succesfully");
 
                             } catch (IOException e) {
                                 e.printStackTrace();
@@ -153,13 +153,22 @@ public class FullScreenWallpaperActivity extends AppCompatActivity {
         //Download
         downloadWallpaper = (CircularProgressButton) findViewById(R.id.buttonDownloadWallpaper);
         downloadWallpaper.setOnClickListener(new View.OnClickListener() {
+
             // @SuppressLint("StaticFieldLeake")
             @Override
             public void onClick(View v) {
+                new StyleableToast
+                        .Builder(FullScreenWallpaperActivity.this)
+                        .text("Downloading Start")
+                        .textColor(Color.BLACK)
+                        .backgroundColor(Color.WHITE)
+                        .iconEnd(R.drawable.ic_baseline_download_for_offline_24)
+                        .show();
                 @SuppressLint("StaticFieldLeak") AsyncTask<String, String, String> demosetWallpaper = new AsyncTask<String, String, String>() {
                     @Override
                     protected String doInBackground(String... strings) {
                         try {
+
                             Thread.sleep(3000);
                         } catch (InterruptedException e) {
                             e.printStackTrace();
@@ -170,14 +179,19 @@ public class FullScreenWallpaperActivity extends AppCompatActivity {
                     @Override
                     protected void onPostExecute(String s) {
                         if (s.equals("done")) {
-                            Toast.makeText(FullScreenWallpaperActivity.this, "Downloading Start...", Toast.LENGTH_SHORT).show();
+
                             AltexImageDownloader.writeToDisk(FullScreenWallpaperActivity.this, originalUrl, "pexels");
 
                             Bitmap bitmap2 = drawableToBitmap(getResources().getDrawable(R.drawable.ic_baseline_done_24));
                             //  downloadWallpaper.doneLoadingAnimation(R.color.purple_200, bitmap2);
-                            downloadWallpaper.setText("Succesfully Download");
-                            Toast.makeText(FullScreenWallpaperActivity.this, "Succesfully Downloadin", Toast.LENGTH_SHORT).show();
-
+                           // downloadWallpaper.setText("Succesfully Download");
+                            new StyleableToast
+                                    .Builder(FullScreenWallpaperActivity.this)
+                                    .text("Downloading Succesfully")
+                                    .textColor(Color.WHITE)
+                                    .iconEnd(R.drawable.ic_baseline_done_24)
+                                    .backgroundColor(Color.GREEN)
+                                    .show();
                         }
 
                     }

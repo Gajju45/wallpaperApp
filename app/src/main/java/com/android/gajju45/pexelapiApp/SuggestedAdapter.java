@@ -1,5 +1,6 @@
 package com.android.gajju45.pexelapiApp;
 
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +18,9 @@ public class SuggestedAdapter extends RecyclerView.Adapter<SuggestedAdapter.Suge
 
     ArrayList<SuggestedModel> suggestedModels;
     final private RecyclerViewClickListenerInterface clickListener;
+    int row_index=0;
+
+
 
     public SuggestedAdapter(ArrayList<SuggestedModel> suggestedModels, RecyclerViewClickListenerInterface clickListener) {
         this.suggestedModels = suggestedModels;
@@ -38,6 +42,26 @@ public class SuggestedAdapter extends RecyclerView.Adapter<SuggestedAdapter.Suge
         SuggestedModel suggestedModel = suggestedModels.get(position);
         holder.image.setImageResource(suggestedModel.getImage());
         holder.title.setText(suggestedModel.getTitle());
+
+       /* holder.image.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                row_index=position;
+                notifyDataSetChanged();
+            }
+        });
+        if (row_index==position) {
+            holder.title.setTextColor(Color.RED);
+        } else {
+            holder.title.setTextColor(Color.BLACK);
+        }
+
+        */
+
+
+
+
+
 
     }
 

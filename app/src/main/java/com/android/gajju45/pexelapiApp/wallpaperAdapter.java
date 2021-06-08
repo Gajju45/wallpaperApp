@@ -3,9 +3,11 @@ package com.android.gajju45.pexelapiApp;
 import android.app.WallpaperManager;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -51,6 +53,8 @@ public class wallpaperAdapter extends RecyclerView.Adapter<WallpaperViewHolder> 
                         .putExtra("mediumlUrl", model.getMediumUrl()));
             }
         });
+
+
 
 
     }

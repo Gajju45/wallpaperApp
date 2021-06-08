@@ -54,6 +54,50 @@
                 android:textSize="20sp" />
 
         </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/card"
+                android:elevation="8dp">
+
+                <EditText
+                    android:textCursorDrawable="@drawable/curser_black"
+                    android:background="@null"
+                    android:id="@+id/searchEV"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="15dp"
+                    android:backgroundTint="#F8F8FF"
+                    android:cursorVisible="true"
+                    android:hint="Search Image Here"
+                    android:importantForAutofill="no"
+                    android:inputType="text"
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
+
+                <ImageView
+                    android:id="@+id/search_img"
+                    android:layout_width="30dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="15dp"
+                    android:background="@drawable/ripple"
+                    android:contentDescription="@string/app_name"
+                    android:src="@drawable/ic_baseline_search_24" />
+
+            </RelativeLayout>
+        </RelativeLayout>
         <androidx.core.widget.NestedScrollView
             android:id="@+id/nestedSV"
             android:layout_width="match_parent"
@@ -68,50 +112,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
 
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginEnd="10dp"
-                        android:layout_marginBottom="10dp"
-                        android:background="@drawable/card"
-                        android:elevation="8dp">
-
-                        <EditText
-                            android:textCursorDrawable="@drawable/curser_black"
-                            android:background="@null"
-                            android:id="@+id/searchEV"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_alignParentStart="true"
-                            android:layout_centerVertical="true"
-                            android:layout_marginStart="15dp"
-                            android:backgroundTint="#F8F8FF"
-                            android:cursorVisible="true"
-                            android:hint="Search Image Here"
-                            android:importantForAutofill="no"
-                            android:inputType="text"
-                            android:textColor="@color/black"
-                            android:textSize="14sp" />
-
-                        <ImageView
-                            android:id="@+id/search_img"
-                            android:layout_width="30dp"
-                            android:layout_height="40dp"
-                            android:layout_alignParentEnd="true"
-                            android:layout_centerVertical="true"
-                            android:layout_marginEnd="15dp"
-                            android:background="@drawable/ripple"
-                            android:contentDescription="@string/app_name"
-                            android:src="@drawable/ic_baseline_search_24" />
-
-                    </RelativeLayout>
-                </RelativeLayout>
 
                 <RelativeLayout
 
@@ -166,7 +167,7 @@
                         tools:listitem="@layout/wallpaper_item"
                         android:id="@+id/recyclerView"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:layout_below="@id/topMostTitle"
                         android:layout_marginTop="10dp" />
                 </RelativeLayout>
