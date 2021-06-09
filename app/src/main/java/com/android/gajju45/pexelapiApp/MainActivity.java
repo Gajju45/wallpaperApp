@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     EditText search;
     TextView replaceTitle;
     Boolean isScrolling = false;
-    int pageNumber = 2;
+    int pageNumber = 1;
     int currentItem, totalItem, scrollOutItem;
 
     ProgressBar progressBar;
@@ -73,7 +73,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     EditText searchEt;
     ImageView searchIV;
     NestedScrollView nestedScrollView;
-
 
 
     @Override
@@ -94,8 +93,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         View headerView = navigationView.getHeaderView(0);
 
 
-
-
         //recycler View
         recyclerView = findViewById(R.id.recyclerView);
         topMostRecyclerView = findViewById(R.id.suggestedRecyclerView);
@@ -104,8 +101,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         wallpaperAdapter = new wallpaperAdapter(this, wallpaperModelList);
 
         //Connection
-        if(!isConnected(this))
-        {
+        if (!isConnected(this)) {
             showCustomDialog();
         }
 //scroll Behaviour
@@ -123,7 +119,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         //Nested Recycler View
         nestedScrollView.setOnScrollChangeListener((NestedScrollView.OnScrollChangeListener) (v, scrollX, scrollY, oldScrollX, oldScrollY) -> {
-            if(v.getChildAt(v.getChildCount() - 1) != null) {
+            if (v.getChildAt(v.getChildCount() - 1) != null) {
                 if ((scrollY >= (v.getChildAt(v.getChildCount() - 1).getMeasuredHeight() - v.getMeasuredHeight())) &&
                         scrollY > oldScrollY) {
                     url = "https://api.pexels.com/v1/curated/?page=" + pageNumber + "per_page=80";
@@ -138,29 +134,27 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         final GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 2);
         recyclerView.setLayoutManager(gridLayoutManager);
 
-     /****   recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
-            @Override
-            public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
-                super.onScrollStateChanged(recyclerView, newState);
-                if (newState == AbsListView.OnScrollListener.SCROLL_STATE_TOUCH_SCROLL) {
-                    isScrolling = true;
-                }
-            }
+        /****   recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+        @Override public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
+        super.onScrollStateChanged(recyclerView, newState);
+        if (newState == AbsListView.OnScrollListener.SCROLL_STATE_TOUCH_SCROLL) {
+        isScrolling = true;
+        }
+        }
 
-            @Override
-            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
-                super.onScrolled(recyclerView, dx, dy);
-                currentItem = gridLayoutManager.getChildCount();
-                totalItem = gridLayoutManager.getItemCount();
-                scrollOutItem = gridLayoutManager.findFirstVisibleItemPosition();
+        @Override public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
+        super.onScrolled(recyclerView, dx, dy);
+        currentItem = gridLayoutManager.getChildCount();
+        totalItem = gridLayoutManager.getItemCount();
+        scrollOutItem = gridLayoutManager.findFirstVisibleItemPosition();
 
-                if (isScrolling && (currentItem + scrollOutItem == totalItem)) {
-                    isScrolling = false;
-                    fetchWallpaper();
-                }
-            }
+        if (isScrolling && (currentItem + scrollOutItem == totalItem)) {
+        isScrolling = false;
+        fetchWallpaper();
+        }
+        }
         });
-*****/
+         *****/
         fetchWallpaper();
         suggestedItems();
         progressBar = findViewById(R.id.progressbar);
@@ -168,19 +162,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         replaceTitle = findViewById(R.id.topMostTitle);
 
 
-
-
         //search Et and IV
         searchEt = findViewById(R.id.searchEV);
         searchIV = findViewById(R.id.search_img);
 
 
-
         searchIV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String query = search.getText().toString().toLowerCase();
                 progressBar.setVisibility(View.VISIBLE);
+                String query = search.getText().toString().toLowerCase();
                 url = "https://api.pexels.com/v1/search/?page=" + pageNumber + "&per_page=80&query=" + query;
                 wallpaperModelList.clear();
                 fetchWallpaper();
@@ -189,53 +180,58 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
         });
 
+/*
         //Search Implementation
-       searchEt.addTextChangedListener(new TextWatcher() {
-           @Override
-           public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+        searchEt.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
-           }
 
-           @Override
-           public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-               String query = search.getText().toString().toLowerCase();
-               progressBar.setVisibility(View.VISIBLE);
-               url = "https://api.pexels.com/v1/search/?page=" + pageNumber + "&per_page=80&query=" + query;
-               wallpaperModelList.clear();
-               fetchWallpaper();
-               progressBar.setVisibility(View.GONE);
+            }
 
-           }
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
-           @Override
-           public void afterTextChanged(Editable editable) {
 
-           }
-       });
+            }
 
+            @Override
+            public void afterTextChanged(Editable editable) {
+                String query = search.getText().toString().toLowerCase();
+                progressBar.setVisibility(View.VISIBLE);
+                url = "https://api.pexels.com/v1/search/?page=" + pageNumber + "&per_page=80&query=" + query;
+                wallpaperModelList.clear();
+                fetchWallpaper();
+                progressBar.setVisibility(View.GONE);
+
+
+            }
+        });
+*/
     }
+
+
 
 
 //Check Internet Connection
 
     private boolean isConnected(MainActivity mainActivity) {
-        ConnectivityManager connectivityManager=(ConnectivityManager) mainActivity.getSystemService(Context.CONNECTIVITY_SERVICE);
+        ConnectivityManager connectivityManager = (ConnectivityManager) mainActivity.getSystemService(Context.CONNECTIVITY_SERVICE);
 
-        NetworkInfo wifiConnection=connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
-        NetworkInfo mobileConnecton=connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
+        NetworkInfo wifiConnection = connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
+        NetworkInfo mobileConnecton = connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
 
-        if (wifiConnection != null &&wifiConnection.isConnected() || (mobileConnecton !=null &&mobileConnecton.isConnected())){
+        if (wifiConnection != null && wifiConnection.isConnected() || (mobileConnecton != null && mobileConnecton.isConnected())) {
             return true;
 
-        }
-        else {
+        } else {
             return false;
         }
 
     }
 
     private void showCustomDialog() {
-        AlertDialog.Builder builder=new AlertDialog.Builder(this);
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage("Please Connect to the internet to proceed further")
                 .setCancelable(false)
                 .setPositiveButton("Connect", new DialogInterface.OnClickListener() {
@@ -270,10 +266,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
    */
-
-
-
-
 
 
     private void navigationDrawer() {
@@ -396,13 +388,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             @Override
             public void onErrorResponse(VolleyError error) {
 
-                Toast.makeText(MainActivity.this, ""+error, Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, "" + error, Toast.LENGTH_SHORT).show();
             }
 
         }) {
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
-                HashMap<String, String> params= new HashMap<>();
+                HashMap<String, String> params = new HashMap<>();
                 params.put("Authorization", "563492ad6f91700001000001e7e1e222b23a412194e13ce4d3dd35f2");
                 return params;
             }
@@ -465,11 +457,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
 
     }
+
     @SuppressWarnings("serial")
     public class ClientError extends ServerError {
         public ClientError(NetworkResponse networkResponse) {
             super(networkResponse);
         }
+
         public ClientError() {
             super();
         }

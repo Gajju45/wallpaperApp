@@ -26,6 +26,7 @@
         android:background="#F8F8FF"
         android:orientation="vertical">
 
+
         <RelativeLayout
             android:id="@+id/relative_first"
             android:layout_width="match_parent"
@@ -159,6 +160,7 @@
                         android:layout_height="20dp"
                         android:layout_marginStart="10dp"
                         android:layout_marginTop="10dp"
+                        android:layout_centerHorizontal="true"
                         android:layout_toEndOf="@id/topMostTitle"
                         android:indeterminateTint="@color/black"
                         />
@@ -170,8 +172,12 @@
                         android:layout_height="match_parent"
                         android:layout_below="@id/topMostTitle"
                         android:layout_marginTop="10dp" />
+
                 </RelativeLayout>
+
             </LinearLayout>
+
+
         </androidx.core.widget.NestedScrollView>
 
 

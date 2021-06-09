@@ -30,12 +30,13 @@
 
             <TextView
                 android:id="@+id/skipTV"
+                android:padding="6dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="24dp"
                 android:gravity="end"
                 android:text="Skip"
-                android:textColor="@color/white"
+                android:textColor="@color/back_button"
                 android:textSize="18sp" />
 
         </LinearLayout>
@@ -94,7 +95,6 @@
                     app:ccp_contentColor="@color/white" />
 
                 <EditText
-
                     android:id="@+id/editText_carrierNum"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
