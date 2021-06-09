@@ -32,7 +32,7 @@ import java.util.concurrent.TimeUnit;
 public class VerificationActivity extends AppCompatActivity {
     private EditText otp;
     private AppCompatButton submit;
-    private TextView resend;
+    private TextView resend,mobile_VA,edit_phone_num_TV;
     private MKLoader loader;
     private String number, id;
     private FirebaseAuth mAuth;
@@ -51,9 +51,24 @@ public class VerificationActivity extends AppCompatActivity {
         otp = findViewById(R.id.otp);
         submit = findViewById(R.id.submit);
         resend = findViewById(R.id.resend);
+        edit_phone_num_TV = findViewById(R.id.edit_phone_num_TV);
         mAuth = FirebaseAuth.getInstance();
         number = getIntent().getStringExtra("number");
+        mobile_VA=findViewById(R.id.mobile_VA);
 
+        String mobnum=getIntent().getStringExtra("number");
+        mobile_VA.setText(mobnum);
+
+
+
+        edit_phone_num_TV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(VerificationActivity.this, LoginActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
 
         sendVerificationCode();

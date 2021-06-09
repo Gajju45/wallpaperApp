@@ -3,6 +3,7 @@ package com.android.gajju45.pexelapiApp;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 
+import android.app.LauncherActivity;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -49,6 +50,8 @@ public class LoginActivity extends AppCompatActivity {
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+
                 if (TextUtils.isEmpty(number.getText().toString())) {
 
                     Toast.makeText(LoginActivity.this, "Enter Your Mobile Number", Toast.LENGTH_SHORT).show();

@@ -98,7 +98,7 @@
                     android:textStyle="bold"
                     android:text="Number "
                     android:textColor="@color/back_button"
-                    android:textSize="12sp" />
+                    android:textSize="16sp" />
 
 
             </LinearLayout>
@@ -158,12 +158,16 @@
                 android:orientation="horizontal">
 
                 <TextView
+                    android:padding="12dp"
+                    android:onClick="edit_phone_num_TV"
+                    android:id="@+id/edit_phone_num_TV"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="100dp"
                     android:text="Edit phone number ?"
                     android:textColor="@color/white"
-                    android:textSize="14sp" />
+                    android:textSize="14sp"
+                    tools:ignore="OnClick" />
 
 
                 <TextView
