@@ -19,7 +19,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:visibility="visible"
-        android:backgroundTint="#ebf6f7"
+        SpinKit_Color="@color/back_button"
         style="@style/SpinKitView.Circle"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -32,7 +32,6 @@
         android:id="@+id/progress_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
         android:layout_marginTop="320dp"
         android:textColor="@android:color/black"
         app:layout_constraintLeft_toLeftOf="@id/progress_bar"

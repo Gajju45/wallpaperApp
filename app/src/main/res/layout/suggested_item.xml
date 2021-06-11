@@ -21,7 +21,6 @@
             android:layout_height="match_parent"
             android:layout_centerVertical="true"
             android:layout_gravity="center_horizontal"
-            android:layout_margin="5dp"
             android:background="@drawable/card"
             android:scaleType="centerCrop"
             android:src="@drawable/beautiful" />

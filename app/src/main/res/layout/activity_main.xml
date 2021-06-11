@@ -12,9 +12,9 @@
         android:id="@+id/navigation_view"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
+        android:layout_gravity="start"
         android:background="#edf6f6"
         android:theme="@style/NavigationTheme"
-        android:layout_gravity="start"
         android:visibility="visible"
         app:headerLayout="@layout/nav_header"
         app:menu="@menu/menu_drawer" />
@@ -55,6 +55,7 @@
                 android:textSize="20sp" />
 
         </RelativeLayout>
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -70,20 +71,20 @@
                 android:elevation="8dp">
 
                 <EditText
-                    android:textCursorDrawable="@drawable/curser_black"
-                    android:background="@null"
                     android:id="@+id/searchEV"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_alignParentStart="true"
                     android:layout_centerVertical="true"
                     android:layout_marginStart="15dp"
+                    android:background="@null"
                     android:backgroundTint="#F8F8FF"
                     android:cursorVisible="true"
                     android:hint="Search Image Here"
                     android:importantForAutofill="no"
                     android:inputType="text"
                     android:textColor="@color/black"
+                    android:textCursorDrawable="@drawable/curser_black"
                     android:textSize="14sp" />
 
                 <ImageView
@@ -99,6 +100,7 @@
 
             </RelativeLayout>
         </RelativeLayout>
+
         <androidx.core.widget.NestedScrollView
             android:id="@+id/nestedSV"
             android:layout_width="match_parent"
@@ -112,7 +114,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
-
 
 
                 <RelativeLayout
@@ -134,9 +135,9 @@
                         android:id="@+id/suggestedRecyclerView"
                         android:layout_width="match_parent"
                         android:layout_height="80dp"
-                        tools:listitem="@layout/suggested_item"
                         android:layout_below="@id/suggestedTitleRV"
-                        android:layout_marginTop="10dp" />
+                        android:layout_marginTop="10dp"
+                        tools:listitem="@layout/suggested_item" />
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -158,20 +159,19 @@
                         android:id="@+id/progressbar"
                         android:layout_width="20dp"
                         android:layout_height="20dp"
+                        android:layout_centerHorizontal="true"
                         android:layout_marginStart="10dp"
                         android:layout_marginTop="10dp"
-                        android:layout_centerHorizontal="true"
                         android:layout_toEndOf="@id/topMostTitle"
-                        android:indeterminateTint="@color/black"
-                        />
+                        android:indeterminateTint="@color/black" />
 
                     <androidx.recyclerview.widget.RecyclerView
-                        tools:listitem="@layout/wallpaper_item"
                         android:id="@+id/recyclerView"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:layout_below="@id/topMostTitle"
-                        android:layout_marginTop="10dp" />
+                        android:layout_marginTop="10dp"
+                        tools:listitem="@layout/wallpaper_item" />
 
                 </RelativeLayout>
 

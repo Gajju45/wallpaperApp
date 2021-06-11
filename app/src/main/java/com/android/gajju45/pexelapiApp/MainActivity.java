@@ -7,13 +7,8 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.provider.Settings;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.util.Log;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AbsListView;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -63,9 +58,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     ArrayList<SuggestedModel> suggestedModels = new ArrayList<>();
     EditText search;
     TextView replaceTitle;
-    Boolean isScrolling = false;
+
     int pageNumber = 1;
-    int currentItem, totalItem, scrollOutItem;
 
     ProgressBar progressBar;
     String url = "https://api.pexels.com/v1/curated/?page=" + pageNumber + "&per_page=80";
@@ -85,12 +79,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.navigation_view);
         nestedScrollView = findViewById(R.id.nestedSV);
-        search = findViewById(R.id.searchEV);
+
 
         navigationDrawer();
         //profile nav drawer
 
-        View headerView = navigationView.getHeaderView(0);
 
 
         //recycler View
@@ -252,21 +245,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         });
         alert.show();
     }
-  /*  @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.searc,menu);
-        MenuItem menuItem =menu.findItem(R.id.searcIcon);
-        String query = search.getText().toString().toLowerCase();
-        progressBar.setVisibility(View.VISIBLE);
-        url = "https://api.pexels.com/v1/search/?page=" + pageNumber + "&per_page=80&query=" + query;
-        wallpaperModelList.clear();
-        fetchWallpaper();
-        progressBar.setVisibility(View.GONE);
-        return super.onCreateOptionsMenu(menu);
-    }
-
-   */
-
 
     private void navigationDrawer() {
         navigationView.bringToFront();

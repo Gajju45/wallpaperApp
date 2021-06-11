@@ -113,6 +113,13 @@ public class FullScreenWallpaperActivity extends AppCompatActivity {
             @SuppressLint("StaticFieldLeak")
             @Override
             public void onClick(View v) {
+                new StyleableToast
+                        .Builder(FullScreenWallpaperActivity.this)
+                        .text("Wait a Second..")
+                        .textColor(Color.WHITE)
+                        //.iconEnd(R.drawable.ic_baseline_smartphone_24)
+                        .backgroundColor(Color.GRAY)
+                        .show();
 
                 AsyncTask<String, String, String> demosetWallpaper = new AsyncTask<String, String, String>() {
                     @Override
@@ -133,8 +140,15 @@ public class FullScreenWallpaperActivity extends AppCompatActivity {
 
                             try {
                                 wallpaperManager.setBitmap(bitmap2);
-                                Toast.makeText(FullScreenWallpaperActivity.this, "Set Wllpaper succesfully ", Toast.LENGTH_SHORT).show();
-                                Bitmap bm = drawableToBitmap(getResources().getDrawable(R.drawable.ic_baseline_done_24));
+
+                                new StyleableToast
+                                        .Builder(FullScreenWallpaperActivity.this)
+                                        .text("Succesfully")
+                                        .textColor(Color.WHITE)
+                                        .iconEnd(R.drawable.ic_baseline_smartphone_24)
+                                        .backgroundColor(Color.GREEN)
+                                        .show();
+                             //   Bitmap bm = drawableToBitmap(getResources().getDrawable(R.drawable.ic_baseline_done_24));
                                 // setWallpaperButton.doneLoadingAnimation(R.color.purple_200,bm);
 
                             } catch (IOException e) {
