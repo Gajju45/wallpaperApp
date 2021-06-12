@@ -8,9 +8,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -42,6 +46,7 @@ public class SuggestedAdapter extends RecyclerView.Adapter<SuggestedAdapter.Suge
         SuggestedModel suggestedModel = suggestedModels.get(position);
         holder.image.setImageResource(suggestedModel.getImage());
         holder.title.setText(suggestedModel.getTitle());
+        holder.colorContainer.setCardBackgroundColor(suggestedModel.getColor_contain());
 
        /* holder.image.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,6 +69,22 @@ public class SuggestedAdapter extends RecyclerView.Adapter<SuggestedAdapter.Suge
 
 
     }
+    //Random color function
+   /*** private int getRandomColor() {
+        List<Integer> colorCode=new ArrayList<>();
+        colorCode.add(R.color.blue);
+        colorCode.add(R.color.yellow);
+        colorCode.add(R.color.skyblue);
+        colorCode.add(R.color.lightPurple);
+        colorCode.add(R.color.lightGreen);
+        colorCode.add(R.color.gray);
+        colorCode.add(R.color.pink);
+        colorCode.add(R.color.greenlight);
+        colorCode.add(R.color.notgreen);
+        Random randomColor=new Random();
+        int number=randomColor.nextInt(colorCode.size());
+        return colorCode.get(number);
+    }***/
 
     @Override
     public int getItemCount() {
@@ -74,11 +95,13 @@ public class SuggestedAdapter extends RecyclerView.Adapter<SuggestedAdapter.Suge
 
         ImageView image;
         TextView title;
+        CardView colorContainer;
 
         public SugestedVH(@NonNull View itemView) {
             super(itemView);
             image = itemView.findViewById(R.id.suggestedImage);
             title = itemView.findViewById(R.id.sugestedTitle);
+            colorContainer = itemView.findViewById(R.id.suggested_card_view);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

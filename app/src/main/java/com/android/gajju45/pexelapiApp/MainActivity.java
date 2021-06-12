@@ -316,14 +316,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         topMostRecyclerView.setHasFixedSize(true);
         topMostRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
 
-        suggestedModels.add(new SuggestedModel(R.drawable.desktop, "Trending"));
-        suggestedModels.add(new SuggestedModel(R.drawable.desktop, "Nature Wallpaper"));
-        suggestedModels.add(new SuggestedModel(R.drawable.desktop, "Dark Wallpaper"));
-        suggestedModels.add(new SuggestedModel(R.drawable.desktop, "Desktop Wallpaper"));
-        suggestedModels.add(new SuggestedModel(R.drawable.desktop, "Coding Wallpaper"));
-        suggestedModels.add(new SuggestedModel(R.drawable.desktop, "Beautiful Wallpaper"));
-        suggestedModels.add(new SuggestedModel(R.drawable.desktop, "4K wallpaper"));
-        suggestedModels.add(new SuggestedModel(R.drawable.desktop, "Lifestyle wallpaper"));
+        suggestedModels.add(new SuggestedModel(R.drawable.desktop, "Trending", getResources().getColor(R.color.pink)));
+        suggestedModels.add(new SuggestedModel(R.drawable.desktop, "Nature ",getResources().getColor(R.color.yellow)));
+        suggestedModels.add(new SuggestedModel(R.drawable.desktop, "Dark ",getResources().getColor(R.color.blue)));
+        suggestedModels.add(new SuggestedModel(R.drawable.desktop, "Desktop ",getResources().getColor(R.color.lightGreen)));
+        suggestedModels.add(new SuggestedModel(R.drawable.desktop, "Coding ",getResources().getColor(R.color.gray)));
+        suggestedModels.add(new SuggestedModel(R.drawable.desktop, "Beautiful ",getResources().getColor(R.color.yellow)));
+        suggestedModels.add(new SuggestedModel(R.drawable.desktop, "4K ",getResources().getColor(R.color.skyblue)));
+        suggestedModels.add(new SuggestedModel(R.drawable.desktop, "Lifestyle ",getResources().getColor(R.color.notgreen)));
 
         adapter = new SuggestedAdapter(suggestedModels, MainActivity.this);
         topMostRecyclerView.setAdapter(adapter);

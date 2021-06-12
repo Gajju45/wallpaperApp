@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="100dp"
-    android:layout_height="70dp"
+    android:layout_width="120dp"
+    android:layout_height="40dp"
+    android:id="@+id/suggested_card_view"
     android:layout_marginStart="4dp"
     android:layout_marginTop="8dp"
     android:layout_marginEnd="4dp"
-    app:cardCornerRadius="8dp"
-    app:cardElevation="5dp">
+    app:cardCornerRadius="10dp"
+    app:cardElevation="10dp">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -17,12 +18,13 @@
 
         <ImageView
             android:id="@+id/suggestedImage"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
             android:layout_centerVertical="true"
-            android:layout_gravity="center_horizontal"
+            android:layout_gravity="start"
             android:background="@drawable/card"
             android:scaleType="centerCrop"
+            android:layout_marginStart="10dp"
             android:src="@drawable/beautiful" />
 
 
@@ -31,13 +33,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_margin="5dp"
-            android:gravity="center_horizontal"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_toRightOf="@id/suggestedImage"
             android:text="Nature"
+            android:gravity="center"
             android:textColor="@color/white"
             android:textSize="10sp"
             android:textStyle="bold" />
-
     </RelativeLayout>
 
 </androidx.cardview.widget.CardView>
