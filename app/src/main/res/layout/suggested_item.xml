@@ -7,7 +7,7 @@
     android:layout_marginStart="4dp"
     android:layout_marginTop="8dp"
     android:layout_marginEnd="4dp"
-    app:cardCornerRadius="10dp"
+    app:cardCornerRadius="20dp"
     app:cardElevation="10dp">
 
     <RelativeLayout
@@ -24,6 +24,7 @@
             android:layout_gravity="start"
             android:background="@drawable/card"
             android:scaleType="centerCrop"
+            android:visibility="gone"
             android:layout_marginStart="10dp"
             android:src="@drawable/beautiful" />
 

@@ -16,6 +16,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.makeramen.roundedimageview.RoundedImageView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -68,7 +69,8 @@ public class wallpaperAdapter extends RecyclerView.Adapter<WallpaperViewHolder> 
 }
 
 class WallpaperViewHolder extends RecyclerView.ViewHolder {
-    ImageView imageView;
+    //ImageView imageView;
+    RoundedImageView imageView;
     TextView photographerName;
 
     public WallpaperViewHolder(@NonNull View itemView) {
