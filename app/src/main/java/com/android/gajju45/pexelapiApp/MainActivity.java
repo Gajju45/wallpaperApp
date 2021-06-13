@@ -56,7 +56,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     wallpaperAdapter wallpaperAdapter;
     List<wallpaperModel> wallpaperModelList;
     ArrayList<SuggestedModel> suggestedModels = new ArrayList<>();
-    EditText search;
     TextView replaceTitle;
 
     int pageNumber = 1;
@@ -97,18 +96,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if (!isConnected(this)) {
             showCustomDialog();
         }
-//scroll Behaviour
-        /** nestedScrollView.setOnScrollChangeListener((NestedScrollView.OnScrollChangeListener) (v, scrollX, scrollY, oldScrollX, oldScrollY) -> {
-         if (scrollY==v.getChildAt(0).getMeasuredHeight()-v.getMeasuredHeight()){
-         ++pageNumber;
-         fetchWallpaper();
-         pageNumber++;
-         // Toast.makeText(this, ""+pageNumber, Toast.LENGTH_SHORT).show();
 
-         }
-
-         });
-         \**\**/
 
         //Nested Recycler View
         nestedScrollView.setOnScrollChangeListener((NestedScrollView.OnScrollChangeListener) (v, scrollX, scrollY, oldScrollX, oldScrollY) -> {
@@ -127,27 +115,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         final GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 2);
         recyclerView.setLayoutManager(gridLayoutManager);
 
-        /****   recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
-        @Override public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
-        super.onScrollStateChanged(recyclerView, newState);
-        if (newState == AbsListView.OnScrollListener.SCROLL_STATE_TOUCH_SCROLL) {
-        isScrolling = true;
-        }
-        }
 
-        @Override public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
-        super.onScrolled(recyclerView, dx, dy);
-        currentItem = gridLayoutManager.getChildCount();
-        totalItem = gridLayoutManager.getItemCount();
-        scrollOutItem = gridLayoutManager.findFirstVisibleItemPosition();
-
-        if (isScrolling && (currentItem + scrollOutItem == totalItem)) {
-        isScrolling = false;
-        fetchWallpaper();
-        }
-        }
-        });
-         *****/
         fetchWallpaper();
         suggestedItems();
         progressBar = findViewById(R.id.progressbar);
@@ -156,7 +124,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
         //search Et and IV
-        searchEt = findViewById(R.id.searchEV);
+        searchEt = (EditText) findViewById(R.id.searchEV);
         searchIV = findViewById(R.id.search_img);
 
 
@@ -164,7 +132,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             @Override
             public void onClick(View v) {
                 progressBar.setVisibility(View.VISIBLE);
-                String query = search.getText().toString().toLowerCase();
+                String query = searchEt.getText().toString().toLowerCase();
+                progressBar.setVisibility(View.INVISIBLE);
                 url = "https://api.pexels.com/v1/search/?page=" + pageNumber + "&per_page=80&query=" + query;
                 wallpaperModelList.clear();
                 fetchWallpaper();
@@ -173,34 +142,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
         });
 
-/*
-        //Search Implementation
-        searchEt.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-                String query = search.getText().toString().toLowerCase();
-                progressBar.setVisibility(View.VISIBLE);
-                url = "https://api.pexels.com/v1/search/?page=" + pageNumber + "&per_page=80&query=" + query;
-                wallpaperModelList.clear();
-                fetchWallpaper();
-                progressBar.setVisibility(View.GONE);
-
-
-            }
-        });
-*/
     }
 
 
