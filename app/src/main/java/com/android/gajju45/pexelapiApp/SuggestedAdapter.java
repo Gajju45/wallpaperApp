@@ -23,6 +23,8 @@ public class SuggestedAdapter extends RecyclerView.Adapter<SuggestedAdapter.Suge
     ArrayList<SuggestedModel> suggestedModels;
     final private RecyclerViewClickListenerInterface clickListener;
     int row_index=0;
+    int selectedPosition=0;
+
 
 
 
@@ -45,8 +47,27 @@ public class SuggestedAdapter extends RecyclerView.Adapter<SuggestedAdapter.Suge
     public void onBindViewHolder(@NonNull SugestedVH holder, int position) {
         SuggestedModel suggestedModel = suggestedModels.get(position);
         holder.image.setImageResource(suggestedModel.getImage());
-        holder.title.setText(suggestedModel.getTitle());
         holder.colorContainer.setCardBackgroundColor(suggestedModel.getColor_contain());
+        holder.title.setText(suggestedModel.getTitle());
+
+        if(selectedPosition==position) {
+             holder.colorContainer.setCardBackgroundColor(Color.parseColor("#FFFFFF"));
+             holder.title.setTextColor(Color.parseColor("#000000"));
+         }
+        else{
+            holder.colorContainer.setCardBackgroundColor(suggestedModel.getColor_contain());
+            holder.title.setTextColor(Color.parseColor("#FFFFFF"));
+        }
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                selectedPosition = position;
+                notifyDataSetChanged();
+                clickListener.onItemClick(position);
+            }
+        });
+
 
        /* holder.image.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,6 +83,7 @@ public class SuggestedAdapter extends RecyclerView.Adapter<SuggestedAdapter.Suge
         }
 
         */
+
 
 
 
@@ -102,12 +124,13 @@ public class SuggestedAdapter extends RecyclerView.Adapter<SuggestedAdapter.Suge
             image = itemView.findViewById(R.id.suggestedImage);
             title = itemView.findViewById(R.id.sugestedTitle);
             colorContainer = itemView.findViewById(R.id.suggested_card_view);
-            itemView.setOnClickListener(new View.OnClickListener() {
+          /****  itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    notifyDataSetChanged();
                     clickListener.onItemClick(getAdapterPosition());
                 }
-            });
+            });  ****/
 
         }
     }
