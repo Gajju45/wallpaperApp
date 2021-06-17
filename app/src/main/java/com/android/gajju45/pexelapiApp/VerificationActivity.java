@@ -12,6 +12,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,7 +34,7 @@ public class VerificationActivity extends AppCompatActivity {
     private EditText otp;
     private AppCompatButton submit;
     private TextView resend,mobile_VA,edit_phone_num_TV;
-    private MKLoader loader;
+    private ProgressBar loader;
     private String number, id;
     private FirebaseAuth mAuth;
     private PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallbacks;

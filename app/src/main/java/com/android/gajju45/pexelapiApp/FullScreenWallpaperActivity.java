@@ -9,6 +9,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -72,30 +73,32 @@ public class FullScreenWallpaperActivity extends AppCompatActivity {
         });
 
 
-        constraintLayout=findViewById(R.id.medium_photo);
+        constraintLayout = findViewById(R.id.medium_photo);
         Glide.with(this).load(mediumUrl)
                 .listener(new RequestListener<Drawable>() {
                     @Override
                     public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
 
-                        progressDialog =new ProgressDialog(FullScreenWallpaperActivity.this);
+                        progressDialog = new ProgressDialog(FullScreenWallpaperActivity.this);
                         progressDialog.show();
                         progressDialog.setContentView(R.layout.progress_dialog);
+                        progressDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
 
-                       return false;
+
+                        return false;
                     }
 
                     @Override
                     public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
-                        progressDialog =new ProgressDialog(FullScreenWallpaperActivity.this);
+                        progressDialog = new ProgressDialog(FullScreenWallpaperActivity.this);
                         progressDialog.show();
                         progressDialog.setContentView(R.layout.progress_dialog);
+                        progressDialog.setCanceledOnTouchOutside(false);
+                        progressDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
 
                         return false;
                     }
                 }).into(constraintLayout);
-
-
 
 
         photoView = findViewById(R.id.photoView);
@@ -103,14 +106,14 @@ public class FullScreenWallpaperActivity extends AppCompatActivity {
                 .listener(new RequestListener<Drawable>() {
                     @Override
                     public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
-                       // progressBar.setVisibility(View.GONE);
+                        // progressBar.setVisibility(View.GONE);
                         progressDialog.dismiss();
                         return false;
                     }
 
                     @Override
                     public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
-                      //  progressBar.setVisibility(View.GONE);
+                        //  progressBar.setVisibility(View.GONE);
                         progressDialog.dismiss();
 
                         return false;
@@ -134,7 +137,7 @@ public class FullScreenWallpaperActivity extends AppCompatActivity {
                     @Override
                     protected String doInBackground(String... strings) {
                         try {
-                            Thread.sleep(5000);
+                            Thread.sleep(3000);
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
@@ -157,7 +160,7 @@ public class FullScreenWallpaperActivity extends AppCompatActivity {
                                         .iconEnd(R.drawable.ic_baseline_smartphone_24)
                                         .backgroundColor(Color.GREEN)
                                         .show();
-                             //   Bitmap bm = drawableToBitmap(getResources().getDrawable(R.drawable.ic_baseline_done_24));
+                                //   Bitmap bm = drawableToBitmap(getResources().getDrawable(R.drawable.ic_baseline_done_24));
                                 // setWallpaperButton.doneLoadingAnimation(R.color.purple_200,bm);
 
                             } catch (IOException e) {
@@ -207,7 +210,7 @@ public class FullScreenWallpaperActivity extends AppCompatActivity {
 
                             Bitmap bitmap2 = drawableToBitmap(getResources().getDrawable(R.drawable.ic_baseline_done_24));
                             //  downloadWallpaper.doneLoadingAnimation(R.color.purple_200, bitmap2);
-                           // downloadWallpaper.setText("Succesfully Download");
+                            // downloadWallpaper.setText("Succesfully Download");
                             new StyleableToast
                                     .Builder(FullScreenWallpaperActivity.this)
                                     .text("Downloading Succesfully")
