@@ -54,10 +54,12 @@ public class LoginActivity extends AppCompatActivity {
 
                 if (TextUtils.isEmpty(number.getText().toString())) {
 
-                    Toast.makeText(LoginActivity.this, "Enter Your Mobile Number", Toast.LENGTH_SHORT).show();
+                    number.setError("Enter Your Mobile Number");
+                    //Toast.makeText(LoginActivity.this, "Enter Your Mobile Number", Toast.LENGTH_SHORT).show();
                 } else if (number.getText().toString().replace(" ", "").length()!=10) {
 
-                    Toast.makeText(LoginActivity.this, "Please Enter A Valid  Number", Toast.LENGTH_SHORT).show();
+                    number.setError("Enter Your Valid Number");
+                    //Toast.makeText(LoginActivity.this, "Please Enter A Valid  Number", Toast.LENGTH_SHORT).show();
                 } else {
                     Intent intent = new Intent(LoginActivity.this, VerificationActivity.class);
                     intent.putExtra("number", countryCodePicker.getFullNumberWithPlus().replace(" ", ""));

@@ -69,25 +69,6 @@ public class SuggestedAdapter extends RecyclerView.Adapter<SuggestedAdapter.Suge
         });
 
 
-       /* holder.image.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                row_index=position;
-                notifyDataSetChanged();
-            }
-        });
-        if (row_index==position) {
-            holder.title.setTextColor(Color.RED);
-        } else {
-            holder.title.setTextColor(Color.BLACK);
-        }
-
-        */
-
-
-
-
-
 
 
     }

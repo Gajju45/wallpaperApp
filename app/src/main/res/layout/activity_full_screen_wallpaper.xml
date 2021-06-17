@@ -14,30 +14,9 @@
         android:layout_height="match_parent"/>
 
 
-    <com.github.ybq.android.spinkit.SpinKitView
-        android:id="@+id/progress_bar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:visibility="visible"
-        SpinKit_Color="@color/back_button"
-        style="@style/SpinKitView.Circle"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
 
-    <TextView
-        android:id="@+id/progress_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="320dp"
-        android:textColor="@android:color/black"
-        app:layout_constraintLeft_toLeftOf="@id/progress_bar"
-        app:layout_constraintStart_toEndOf="@+id/progress_bar"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="Downloading....%" />
+
 
     <com.github.chrisbanes.photoview.PhotoView
         android:id="@+id/photoView"

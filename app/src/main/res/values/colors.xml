@@ -26,6 +26,7 @@
     <color name="skyblue">#1EAE98</color>
     <color name="gray">#7C807A</color>
     <color name="Trending">#CF0000</color>
+    <color name="transparent">#AARRGGBB</color>
 
 
 </resources>

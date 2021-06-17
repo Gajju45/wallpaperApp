@@ -1,6 +1,7 @@
 package com.android.gajju45.pexelapiApp;
 
 import android.annotation.SuppressLint;
+import android.app.ProgressDialog;
 import android.app.WallpaperManager;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -47,6 +48,7 @@ public class FullScreenWallpaperActivity extends AppCompatActivity {
     CircularProgressButton setWallpaperButton, downloadWallpaper;
     ImageView shareBtn, backBytton;
     ImageView constraintLayout;
+    ProgressDialog progressDialog;
 
 
     @Override
@@ -56,10 +58,6 @@ public class FullScreenWallpaperActivity extends AppCompatActivity {
         Intent intent = getIntent();
         originalUrl = intent.getStringExtra("originalUrl");
         mediumUrl = intent.getStringExtra("mediumlUrl");
-
-
-        final ProgressBar progressBar = (ProgressBar) findViewById(R.id.progress_bar);
-
 
         shareBtn = findViewById(R.id.shareImg);
         backBytton = findViewById(R.id.backButton);
@@ -79,11 +77,19 @@ public class FullScreenWallpaperActivity extends AppCompatActivity {
                 .listener(new RequestListener<Drawable>() {
                     @Override
                     public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
+
+                        progressDialog =new ProgressDialog(FullScreenWallpaperActivity.this);
+                        progressDialog.show();
+                        progressDialog.setContentView(R.layout.progress_dialog);
+
                        return false;
                     }
 
                     @Override
                     public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
+                        progressDialog =new ProgressDialog(FullScreenWallpaperActivity.this);
+                        progressDialog.show();
+                        progressDialog.setContentView(R.layout.progress_dialog);
 
                         return false;
                     }
@@ -97,13 +103,16 @@ public class FullScreenWallpaperActivity extends AppCompatActivity {
                 .listener(new RequestListener<Drawable>() {
                     @Override
                     public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
-                        progressBar.setVisibility(View.GONE);
+                       // progressBar.setVisibility(View.GONE);
+                        progressDialog.dismiss();
                         return false;
                     }
 
                     @Override
                     public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
-                        progressBar.setVisibility(View.GONE);
+                      //  progressBar.setVisibility(View.GONE);
+                        progressDialog.dismiss();
+
                         return false;
                     }
                 }).into(photoView);
@@ -125,7 +134,7 @@ public class FullScreenWallpaperActivity extends AppCompatActivity {
                     @Override
                     protected String doInBackground(String... strings) {
                         try {
-                            Thread.sleep(3000);
+                            Thread.sleep(5000);
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
