@@ -69,4 +69,6 @@ dependencies {
     //Rounded Image View
     implementation 'com.makeramen:roundedimageview:2.3.0'
 
+    //ClassPath
+    implementation 'org.jetbrains:annotations:15.0'
 }

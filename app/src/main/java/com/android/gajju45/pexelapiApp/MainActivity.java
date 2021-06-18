@@ -260,10 +260,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         suggestedModels.add(new SuggestedModel(R.drawable.desktop, "Trending", getResources().getColor(R.color.Trending)));
         suggestedModels.add(new SuggestedModel(R.drawable.desktop, "Nature ",getResources().getColor(R.color.nature)));
         suggestedModels.add(new SuggestedModel(R.drawable.desktop, "Dark ",getResources().getColor(R.color.login_background)));
-        suggestedModels.add(new SuggestedModel(R.drawable.desktop, "Desktop ",getResources().getColor(R.color.teal_700)));
-        suggestedModels.add(new SuggestedModel(R.drawable.desktop, "Coding ",getResources().getColor(R.color.gray)));
-        suggestedModels.add(new SuggestedModel(R.drawable.desktop, "Beautiful ",getResources().getColor(R.color.yellow)));
-        suggestedModels.add(new SuggestedModel(R.drawable.desktop, "4K ",getResources().getColor(R.color.skyblue)));
+        suggestedModels.add(new SuggestedModel(R.drawable.desktop, "Desktop ",getResources().getColor(R.color.desktop)));
+        suggestedModels.add(new SuggestedModel(R.drawable.desktop, "Coding ",getResources().getColor(R.color.coding)));
+        suggestedModels.add(new SuggestedModel(R.drawable.desktop, "Beautiful ",getResources().getColor(R.color.beautiful)));
+        suggestedModels.add(new SuggestedModel(R.drawable.desktop, "4K ",getResources().getColor(R.color.kwallpaper)));
         suggestedModels.add(new SuggestedModel(R.drawable.desktop, "Lifestyle ",getResources().getColor(R.color.lifestyle)));
 
         adapter = new SuggestedAdapter(suggestedModels, MainActivity.this);
