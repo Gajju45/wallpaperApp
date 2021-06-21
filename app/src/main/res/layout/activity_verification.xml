@@ -193,17 +193,16 @@
         </LinearLayout>
     </LinearLayout>
 
-    <com.tuyenmonkey.mkloader.MKLoader
+    <ProgressBar
         android:id="@+id/loader"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
         android:layout_marginTop="50dp"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:mk_color="@color/white"
-        app:mk_type="FishSpinner" />
+      />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
