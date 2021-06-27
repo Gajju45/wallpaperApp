@@ -45,12 +45,12 @@
 
             <TextView
                 android:id="@+id/appName"
-                android:layout_width="80dp"
+                android:layout_width="wrap_content"
                 android:layout_height="30dp"
                 android:layout_centerVertical="true"
                 android:layout_toEndOf="@id/menu_icon"
                 android:gravity="center"
-                android:text="PEXELS"
+                android:text="HD Wallpaper"
                 android:textColor="@color/black"
                 android:textSize="20sp" />
 

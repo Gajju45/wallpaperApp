@@ -20,7 +20,7 @@
             android:adjustViewBounds="true"
             android:contentDescription="@string/app_name"
             android:scaleType="centerCrop"
-            android:src="@drawable/pexel_image"
+            android:src="@drawable/w_logo"
             app:riv_corner_radius="10dip" />
 
         <View
