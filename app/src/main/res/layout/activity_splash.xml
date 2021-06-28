@@ -6,14 +6,25 @@
     android:layout_height="match_parent"
     tools:context=".SplashActivity">
     <ImageView
+        android:id="@+id/splash"
         android:layout_width="120dp"
         android:layout_height="120dp"
-        android:src="@drawable/pexel_image"
+        android:src="@drawable/w_logo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.458" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="HD Wallpaper"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:gravity="center"
+        android:textColor="@color/white"
+        app:layout_constraintTop_toBottomOf="@id/splash"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -16,6 +16,8 @@ public class SplashActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
+
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         if (Build.VERSION.SDK_INT>= Build.VERSION_CODES.M)
         {
             getWindow().setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
@@ -26,14 +28,14 @@ public class SplashActivity extends AppCompatActivity {
             public void run() {
                 if (FirebaseAuth.getInstance().getCurrentUser()==null)
                 {
-                    startActivity(new Intent(SplashActivity.this,MainActivity.class));
+                    startActivity(new Intent(SplashActivity.this,LoginActivity.class));
                     finish();
                 }else {
-                    startActivity(new Intent(SplashActivity.this,MainActivity.class));
+                    startActivity(new Intent(SplashActivity.this,LoginActivity.class));
                     finish();
 
                 }
             }
-        },3500);
+        },1000);
     }
 }

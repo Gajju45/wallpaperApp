@@ -5,6 +5,7 @@ import androidx.appcompat.widget.AppCompatButton;
 
 import android.app.LauncherActivity;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -70,5 +71,11 @@ public class LoginActivity extends AppCompatActivity {
         });
 
 
+    }
+
+    public void tandc(View view) {
+        Intent intent=new Intent(Intent.ACTION_VIEW, Uri.parse("https://hd-wallpaper-7.flycricket.io/terms.html"));
+        startActivity(intent);
+        finish();
     }
 }

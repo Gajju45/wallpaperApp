@@ -246,14 +246,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.nav_home:
-                Intent intent = new Intent(MainActivity.this, MainActivity.class);
-                startActivity(intent);
+                startActivity(new Intent(MainActivity.this, MainActivity.class)); ;
+                Toast.makeText(this, "Home", Toast.LENGTH_SHORT).show();
                 finish();
+                return true;
             case R.id.nav_log_out:
                 FirebaseAuth.getInstance().signOut();
                 startActivity(new Intent(MainActivity.this, LoginActivity.class)); //Go back to home page
                 Toast.makeText(this, "LogOut Succesfully", Toast.LENGTH_SHORT).show();
                 finish();
+                return true;
         }
         return true;
     }
