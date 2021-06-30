@@ -251,6 +251,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 finish();
                 return true;
             case R.id.nav_log_out:
+                if(FirebaseAuth.getInstance()==null)
+                {
+                    Toast.makeText(this, "Login..To your Account", Toast.LENGTH_SHORT).show();
+                }
+                else
                 FirebaseAuth.getInstance().signOut();
                 startActivity(new Intent(MainActivity.this, LoginActivity.class)); //Go back to home page
                 Toast.makeText(this, "LogOut Succesfully", Toast.LENGTH_SHORT).show();
