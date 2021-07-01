@@ -250,6 +250,21 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 Toast.makeText(this, "Home", Toast.LENGTH_SHORT).show();
                 finish();
                 return true;
+
+            case R.id.nav_share:
+
+                try {
+                    Intent shareIntent = new Intent(Intent.ACTION_SEND);
+                    shareIntent.setType("text/plain");
+                    shareIntent.putExtra(Intent.EXTRA_SUBJECT, "HD Wallpaper");
+                    String shareMessage= "\nHD Wallpaper\n\n";//Let me recommend you this application HD Wallpaper Download & share
+                    shareMessage = shareMessage + "https://github.com/Gajju45/APK-Files";
+                    shareIntent.putExtra(Intent.EXTRA_TEXT, shareMessage);
+                    startActivity(Intent.createChooser(shareIntent, "choose one"));
+                } catch(Exception e) {
+                    //e.toString();
+                }
+                return true;
             case R.id.nav_log_out:
                 if(FirebaseAuth.getInstance()==null)
                 {
